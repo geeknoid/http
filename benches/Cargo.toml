@@ -4,6 +4,10 @@ version = "0.0.0"
 edition = "2018"
 publish = false
 
+# `benches` is excluded from the root workspace, so declare an empty workspace
+# table to let it build as a standalone package.
+[workspace]
+
 [dependencies]
 bytes = "1"
 fnv = "1.0.5"
@@ -16,6 +20,7 @@ seahash = "3.0.5"
 serde = "1.0"
 serde_json = "1.0"
 criterion = "0.3.2"
+gungraun = "0.19.4"
 
 [[bench]]
 name = "header_map"
@@ -41,3 +46,39 @@ path = "src/method.rs"
 [[bench]]
 name = "uri"
 path = "src/uri.rs"
+
+# Gungraun (callgrind-based) mirrors of the benchmarks above.
+[[bench]]
+name = "gungraun_header_map"
+path = "src/gungraun/header_map.rs"
+harness = false
+
+[[bench]]
+name = "gungraun_header_name"
+path = "src/gungraun/header_name.rs"
+harness = false
+
+[[bench]]
+name = "gungraun_header_name2"
+path = "src/gungraun/header_name2.rs"
+harness = false
+
+[[bench]]
+name = "gungraun_header_value"
+path = "src/gungraun/header_value.rs"
+harness = false
+
+[[bench]]
+name = "gungraun_method"
+path = "src/gungraun/method.rs"
+harness = false
+
+[[bench]]
+name = "gungraun_uri"
+path = "src/gungraun/uri.rs"
+harness = false
+
+[[bench]]
+name = "opt_paths"
+path = "src/opt_paths.rs"
+harness = false
